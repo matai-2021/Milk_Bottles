@@ -4,4 +4,25 @@
 
 body {
     background-color: coral;
+
+}
+
+img {
+    height: 80%;
+    width: 80%;
+}
+.background-image {
+    background: url("images/background.png") no-repeat  fixed center;
+    height: 900px
+}
+
+.background-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr
+}
+
+.top-left-grid {
+    border: 2px;
+    border-style: solid 
 }
