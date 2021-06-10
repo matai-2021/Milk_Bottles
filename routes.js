@@ -5,4 +5,6 @@ module.exports = router;
 
 // FILE TO DEFINE ROUTES
 
-// router.get('/.....')
+router.get("/", (req, res) => {
+  res.render("home");
+});
