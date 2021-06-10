@@ -8,3 +8,15 @@ module.exports = router;
 router.get("/", (req, res) => {
   res.render("home");
 });
+
+const data = {
+  question: 'string',
+  answers: [
+    '', '', '', ''
+  ]
+}
+
+returningData = {
+  questionId = 0,
+  userSelection = 2
+}

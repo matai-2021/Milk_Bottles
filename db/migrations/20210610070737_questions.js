@@ -1,15 +1,10 @@
 exports.up = (knex) => {
-  return knex.schema.createTable("questions", (table) => {
-    table.increments("id").primary();
-    table.string("question");
-    table.string("answer_A");
-    table.string("answer_B");
-    table.string("answer_C");
-    table.string("answer_D");
-    table.string("selected_answer");
-  });
-};
+  return knex.schema.createTable('questions', (table) => {
+    table.increments('id').primary()
+    table.string('question')
+  })
+}
 
 exports.down = (knex) => {
-  return knex.schema.dropTable("questions");
-};
+  return knex.schema.dropTable('questions')
+}
