@@ -1,0 +1,16 @@
+    <div class="parentDiv">
+        <h1 class="centreText">Your are a...</h1>
+    </div>
+
+    <div class="resultDiv">
+      <h3>{{name}}</h3>
+      <img class="result_image" src="{{img}}">
+      <p>Answers:</p>
+      <ol>
+        {{#each answers}}
+          <li>
+            {{this}}
+          </li>
+        {{/each}}
+      </ol>
+    </div>

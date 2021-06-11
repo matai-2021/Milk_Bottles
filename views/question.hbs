@@ -7,13 +7,13 @@
   <h2 class="centreText">{{question}}</h2>
 
 
-<form method="POST" action="/locations/edit">
+<form method="POST" action="/question">
   <input type="hidden" name="id" value="{{Questionid}}">
 
   
   {{#each answers}}
-    <input type="radio" id='{{this}}' name="answer" value='{{this}}'>
-    <label for='{{this}}'>{{this}}</label><br>
+    <input type="radio" id='{{@index}}' name="answer" value='{{@index}}'>
+    <label for='{{@index}}'>{{this}}</label><br>
   {{/each}}
 
   <button class="buttonClass">Next</button>
