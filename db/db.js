@@ -5,7 +5,8 @@ const database = knex(config)
 module.exports = {
   getQuestion,
   updateAnswer,
-  getAllAnswers
+  getAllAnswers,
+  dropUserTable
 }
 
 function getQuestion (id, db = database) {
@@ -33,4 +34,8 @@ function updateAnswer (answer, questionId, db = database) {
 
 function getAllAnswers (db = database) {
   return db('input').select('selection')
+}
+
+function dropUserTable (db = database) {
+  return db('input').del()
 }
