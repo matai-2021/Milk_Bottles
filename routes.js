@@ -27,14 +27,12 @@ router.get('/question', async (req, res) => {
     if (currentQuestion >= 6) {
       const viewData = getResult(score)
       viewData.answers = await getAnswersArr()
-      console.log(viewData)
       res.render('result', viewData)
       await dropUserTable()
       currentQuestion = 1
       score = 0
     } else {
       const viewData = await getQuestion(currentQuestion)
-      console.log(viewData);
       currentAnswers = viewData.answers
       res.render('question', await getQuestion(currentQuestion))
     }
