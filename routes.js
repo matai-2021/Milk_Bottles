@@ -1,22 +1,17 @@
-const express = require("express");
+const express = require('express')
+const database = require('./db/db')
 
-const router = express.Router();
-module.exports = router;
+const router = express.Router()
+module.exports = router
+
+let currentQuestion = 1
 
 // FILE TO DEFINE ROUTES
 
-router.get("/", (req, res) => {
-  res.render("home");
-});
-
-const data = {
-  question: 'string',
-  answers: [
-    '', '', '', ''
-  ]
-}
-
-returningData = {
-  questionId = 0,
-  userSelection = 2
-}
+router.get('/', async (req, res) => {
+  try {
+    res.render('home', await database.getQuestion(currentQuestion))
+  } catch (error) {
+    console.error(error.message)
+  }
+})
