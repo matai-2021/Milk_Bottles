@@ -3,8 +3,9 @@ const config = require('./kenxfile.js').development
 const database = knex(config)
 
 module.exports = {
-  getQuestion
-
+  getQuestion,
+  updateAnswer,
+  getAllAnswers
 }
 
 function getQuestion (id, db = database) {
@@ -23,4 +24,13 @@ function getQuestion (id, db = database) {
         answers: arr
       }
     })
+}
+
+function updateAnswer (answer, questionId, db = database) {
+  return db('input')
+    .insert({ question_id: questionId, selection: answer })
+}
+
+function getAllAnswers (db = database) {
+  return db('input').select('selection')
 }
