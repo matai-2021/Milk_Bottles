@@ -1,10 +1,54 @@
-const express = require("express");
+const express = require('express')
+const { getQuestion, updateAnswer, getAllAnswers, dropUserTable } = require('./db/db')
+const { getResult } = require('./utils')
 
-const router = express.Router();
-module.exports = router;
+const router = express.Router()
+module.exports = router
+
+let currentQuestion = 1
+let score = 0
+let currentAnswers = []
 
 // FILE TO DEFINE ROUTES
 
-router.get("/", (req, res) => {
-  res.render("home");
-});
+router.get('/', async (req, res) => {
+  try {
+    await dropUserTable()
+    currentQuestion = 1
+    score = 0
+    res.render('home')
+  } catch (error) {
+    console.error(error.message)
+  }
+})
+
+router.get('/question', async (req, res) => {
+  try {
+    if (currentQuestion >= 6) {
+      const viewData = getResult(score)
+      viewData.answers = await getAllAnswers
+      console.log(viewData)
+      res.render('result', getResult(viewData))
+      await dropUserTable()
+      currentQuestion = 1
+      score = 0
+    } else {
+      const viewData = await getQuestion(currentQuestion)
+      currentAnswers = viewData.answers
+      res.render('question', await getQuestion(currentQuestion))
+    }
+  } catch (error) {
+    console.error(error.message)
+  }
+})
+
+router.post('/question', async (req, res) => {
+  try {
+    updateAnswer(currentAnswers, currentQuestion)
+    currentQuestion++
+    score += req.body.answer
+    res.redirect('/question')
+  } catch (error) {
+    console.error(error.message)
+  }
+})

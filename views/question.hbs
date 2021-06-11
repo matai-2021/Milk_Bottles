@@ -1,0 +1,23 @@
+    <div class="parentDiv">
+        <h1 class="centreText">Question {{questionid}}</h1>
+    </div>
+
+
+<div class="questionDiv">
+  <h2 class="centreText">{{question}}</h2>
+
+
+<form method="POST" action="/question">
+  <input type="hidden" name="id" value="{{Questionid}}">
+
+  
+  {{#each answers}}
+    <input type="radio" id='{{@index}}' name="answer" value='{{@index}}'>
+    <label for='{{@index}}'>{{this}}</label><br>
+  {{/each}}
+
+  <button class="buttonClass">Next</button>
+
+</form>
+
+</div>
