@@ -1,5 +1,5 @@
     <div class="parentDiv">
-        <h1 class="centreText">Question {{questionid}}</h1>
+        <h1 class="centreText">Question {{id}}</h1>
     </div>
 
 
@@ -8,11 +8,11 @@
 
 
 <form method="POST" action="/question">
-  <input type="hidden" name="id" value="{{Questionid}}">
+  <input type="hidden" name="id" value="{{id}}">
 
   
   {{#each answers}}
-    <input type="radio" id='{{@index}}' name="answer" value='{{@index}}'>
+    <input type="radio" id='{{@index}}' name="answer" value='{{@index}}' checked>
     <label for='{{@index}}'>{{this}}</label><br>
   {{/each}}
 

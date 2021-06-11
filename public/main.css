@@ -4,16 +4,31 @@
 
 body {
     background-color: coral;
+    font-family: 'Mulish', sans-serif;
 
 }
 
 img {
-    height: 80%;
-    width: 80%;
+    height: 100%;
+    width: auto;
 }
+/* .background-img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 0;
+    opacity: 0.5;
+    background-repeat: repeat;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  } */
+
 .background-image {
     background: url("images/background.png") no-repeat  fixed center;
-    height: 900px
+    opacity: 0.5;
+    height: 900px;
 }
 
 .background-grid {
@@ -32,7 +47,12 @@ img {
     background-color: coral;
     width:fit-content; 
     display: inline-block; text-align: center;
-    position:relative
+    /* position:relative; */
+    position:absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
     
 }
 
@@ -47,11 +67,12 @@ img {
     position:absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    padding: 5px;
     
 }
 
-.questionDiv {
+.resultDiv {
     border: 2px solid black;
     background-color: rgb(172, 170, 185);
     min-width:200px; 
@@ -61,7 +82,8 @@ img {
     position:absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    padding: 5px;
     
 }
 
@@ -75,6 +97,7 @@ form {
 }
 
 .result_image {
-    width: 20%;
+    width: 40%;
     height: auto;
+    border-radius: 50%;
 }

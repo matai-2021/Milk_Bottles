@@ -1,6 +1,6 @@
 const express = require('express')
-const { getQuestion, updateAnswer, getAllAnswers, dropUserTable } = require('./db/db')
-const { getResult } = require('./utils')
+const { getQuestion, updateAnswer, dropUserTable } = require('./db/db')
+const { getResult, getAnswersArr } = require('./utils')
 
 const router = express.Router()
 module.exports = router
@@ -26,9 +26,8 @@ router.get('/question', async (req, res) => {
   try {
     if (currentQuestion >= 6) {
       const viewData = getResult(score)
-      viewData.answers = await getAllAnswers
-      console.log(viewData)
-      res.render('result', getResult(viewData))
+      viewData.answers = await getAnswersArr()
+      res.render('result', viewData)
       await dropUserTable()
       currentQuestion = 1
       score = 0
@@ -44,9 +43,13 @@ router.get('/question', async (req, res) => {
 
 router.post('/question', async (req, res) => {
   try {
-    updateAnswer(currentAnswers, currentQuestion)
+    console.log('current answer: ', currentAnswers[Number(req.body.answer)])
+
+    const result = await updateAnswer(currentAnswers[Number(req.body.answer)], currentQuestion)
+    console.log(result)
     currentQuestion++
-    score += req.body.answer
+    score += Number(req.body.answer)
+    console.log(score)
     res.redirect('/question')
   } catch (error) {
     console.error(error.message)
