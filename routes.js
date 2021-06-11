@@ -1,5 +1,5 @@
 const express = require('express')
-const { getQuestion, updateAnswer, getAllAnswers, dropUserTable } = require('./db/db')
+const { getQuestion, updateAnswer, dropUserTable } = require('./db/db')
 const { getResult, getAnswersArr } = require('./utils')
 
 const router = express.Router()
@@ -48,7 +48,7 @@ router.post('/question', async (req, res) => {
     console.log('current answer: ', currentAnswers[Number(req.body.answer)])
 
     const result = await updateAnswer(currentAnswers[Number(req.body.answer)], currentQuestion)
-    console.log(result);
+    console.log(result)
     currentQuestion++
     score += Number(req.body.answer)
     console.log(score)
