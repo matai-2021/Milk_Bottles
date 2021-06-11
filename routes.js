@@ -34,6 +34,7 @@ router.get('/question', async (req, res) => {
       score = 0
     } else {
       const viewData = await getQuestion(currentQuestion)
+      console.log(viewData);
       currentAnswers = viewData.answers
       res.render('question', await getQuestion(currentQuestion))
     }

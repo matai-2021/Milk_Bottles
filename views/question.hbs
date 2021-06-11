@@ -1,5 +1,5 @@
     <div class="parentDiv">
-        <h1 class="centreText">Question {{questionid}}</h1>
+        <h1 class="centreText">Question {{id}}</h1>
     </div>
 
 
@@ -8,7 +8,7 @@
 
 
 <form method="POST" action="/question">
-  <input type="hidden" name="id" value="{{Questionid}}">
+  <input type="hidden" name="id" value="{{id}}">
 
   
   {{#each answers}}
